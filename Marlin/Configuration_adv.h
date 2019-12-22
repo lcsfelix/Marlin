@@ -189,14 +189,14 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD        60 // Seconds
-  #define THERMAL_PROTECTION_BED_HYSTERESIS     5 // Degrees Celsius
+  #define THERMAL_PROTECTION_BED_PERIOD 60    // Seconds
+  #define THERMAL_PROTECTION_BED_HYSTERESIS 5 // Degrees Celsius
 
   /**
    * As described above, except for the bed (M140/M190/M303).
    */
-  #define WATCH_BED_TEMP_PERIOD               180 // Seconds
-  #define WATCH_BED_TEMP_INCREASE               2 // Degrees Celsius
+  #define WATCH_BED_TEMP_PERIOD 180               // Seconds
+  #define WATCH_BED_TEMP_INCREASE 2               // Degrees Celsius
 #endif
 
 /**
@@ -1130,9 +1130,12 @@
 
 #if ENABLED(SDSUPPORT)
 
-  // The standard SD detect circuit reads LOW when media is inserted and HIGH when empty.
-  // Enable this option and set to HIGH if your SD cards are incorrectly detected.
-  #define SD_DETECT_STATE LOW
+  // Some RAMPS and other boards don't detect when an SD card is inserted. You can work
+  // around this by connecting a push button or single throw switch to the pin defined
+  // as SD_DETECT_PIN in your board's pins definitions.
+  // This setting should be disabled unless you are using a push button, pulling the pin to ground.
+  // Note: This is always disabled for ULTIPANEL (except ELB_FULL_GRAPHIC_CONTROLLER).
+  //#define SD_DETECT_INVERTED
 
   //#define SDCARD_READONLY                 // Read-only SD card (to save over 2K of flash)
 
